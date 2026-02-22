@@ -68,42 +68,56 @@ cursor:pointer;
 
 <script type="module">
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
-import { getAuth, signInWithEmailAndPassword, signOut } 
+import { getAuth, signInWithEmailAndPassword, signOut, onAuthStateChanged } 
 from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
 
-// 🔥 Paste your Firebase config here
+/* ✅ YOUR REAL FIREBASE CONFIG */
 const firebaseConfig = {
-  apiKey: "PASTE_HERE",
-  authDomain: "PASTE_HERE",
-  projectId: "PASTE_HERE",
-  appId: "PASTE_HERE"
+  apiKey: "AIzaSyBYTyRBydwn-vZcHS_DAwluJT0imZNvvIM",
+  authDomain: "khanta-traders.firebaseapp.com",
+  projectId: "khanta-traders",
+  storageBucket: "khanta-traders.firebasestorage.app",
+  messagingSenderId: "767495287096",
+  appId: "1:767495287096:web:e4a9f241ba3838880991cd",
+  measurementId: "G-SWSN7CHW5C"
 };
 
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 
+/* LOGIN */
 window.login = function(){
-const username = document.getElementById("username").value;
-const password = document.getElementById("password").value;
+const username = document.getElementById("username").value.trim();
+const password = document.getElementById("password").value.trim();
+
+if(!username || !password){
+document.getElementById("error").innerText="Enter Username and Password";
+return;
+}
 
 const email = username + "@khanta.local";
 
 signInWithEmailAndPassword(auth,email,password)
-.then(()=>{
-document.getElementById("loginBox").classList.add("hidden");
-document.getElementById("dashboard").classList.remove("hidden");
-})
-.catch(()=>{
-document.getElementById("error").innerText="Invalid Username or Password";
+.catch((error)=>{
+document.getElementById("error").innerText=error.message;
 });
 }
 
+/* LOGOUT */
 window.logout = function(){
-signOut(auth).then(()=>{
+signOut(auth);
+}
+
+/* AUTO SESSION CHECK */
+onAuthStateChanged(auth, (user) => {
+if(user){
+document.getElementById("loginBox").classList.add("hidden");
+document.getElementById("dashboard").classList.remove("hidden");
+}else{
 document.getElementById("loginBox").classList.remove("hidden");
 document.getElementById("dashboard").classList.add("hidden");
-});
 }
+});
 </script>
 
 </body>
