@@ -19,10 +19,10 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 
-/* LOGIN PAGE LOGIC */
+/* LOGIN LOGIC */
 const loginBtn = document.getElementById("loginBtn");
 
-if(loginBtn){
+if (loginBtn) {
   loginBtn.addEventListener("click", () => {
     const username = document.getElementById("username").value.trim();
     const password = document.getElementById("password").value.trim();
@@ -30,33 +30,38 @@ if(loginBtn){
     const email = username + "@khanta.local";
 
     signInWithEmailAndPassword(auth, email, password)
-    .then(() => {
-      window.location.href = "dashboard.html";
-    })
-    .catch((error) => {
-      document.getElementById("error").innerText = error.message;
-    });
+      .then(() => {
+        window.location.assign("dashboard.html");
+      })
+      .catch((error) => {
+        document.getElementById("error").innerText = error.code;
+      });
   });
 }
 
-/* DASHBOARD PROTECTION */
+/* AUTH STATE LISTENER */
 onAuthStateChanged(auth, (user) => {
 
-  const path = window.location.pathname;
+  const currentPage = window.location.pathname.split("/").pop();
 
-  if(path.includes("dashboard.html")){
-    if(!user){
-      window.location.href = "index.html";
-    }
+  // If user NOT logged in & trying to access dashboard
+  if (!user && currentPage === "dashboard.html") {
+    window.location.replace("index.html");
   }
 
-  const logoutBtn = document.getElementById("logoutBtn");
-
-  if(logoutBtn){
-    logoutBtn.addEventListener("click", () => {
-      signOut(auth).then(() => {
-        window.location.href = "index.html";
-      });
-    });
+  // If user IS logged in & on login page
+  if (user && currentPage === "index.html") {
+    window.location.replace("dashboard.html");
   }
 });
+
+/* LOGOUT LOGIC */
+const logoutBtn = document.getElementById("logoutBtn");
+
+if (logoutBtn) {
+  logoutBtn.addEventListener("click", () => {
+    signOut(auth).then(() => {
+      window.location.replace("index.html");
+    });
+  });
+}
