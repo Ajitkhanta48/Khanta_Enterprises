@@ -1,23 +1,23 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Khanta Enterprises - Secure Login</title>
-    <link rel="stylesheet" href="style.css">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Khanta Enterprises - Secure Login</title>
+<link rel="stylesheet" href="style.css">
 </head>
 <body>
 
 <div class="box" id="loginBox">
-    <h2>Khanta Enterprises</h2>
-    <input type="text" id="username" placeholder="Username">
-    
-    <div class="password-wrapper">
-        <input type="password" id="password" placeholder="Password">
-        <span id="togglePassword">👁️</span>
-    </div>
+<h2>Khanta Enterprises</h2>
+<input type="text" id="username" placeholder="Username">
 
-    <button id="loginBtn">Login</button>
-    <p id="error"></p>
+<div class="input-container">
+  <input type="password" id="password" placeholder="Password">
+  <span class="toggle-icon" id="togglePassword">👁️</span>
+</div>
+
+<button id="loginBtn">Login</button>
+<p id="error"></p>
 </div>
 
 <script type="module" src="app.js"></script>
