@@ -70,3 +70,14 @@ if (logoutBtn) {
     });
   });
 }
+onAuthStateChanged(auth, (user) => {
+  if (user) {
+    // Extract the username from the email (e.g., admin from admin@khanta.local)
+    const username = user.email.split('@')[0];
+    const greetingElement = document.getElementById("userDisplayName");
+    if (greetingElement) {
+        greetingElement.innerText = username.charAt(0).toUpperCase() + username.slice(1);
+    }
+  }
+  // ... rest of your redirection logic
+});
