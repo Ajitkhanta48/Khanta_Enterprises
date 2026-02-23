@@ -153,3 +153,89 @@ tr td:last-child { border-radius: 0 8px 8px 0; text-align: right; }
   background: #ff7675;
   color: white;
 }
+
+/* Dashboard Specific Layout */
+.dashboard-body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    justify-content: flex-start; /* Overriding your center alignment for dashboard */
+    align-items: stretch;
+}
+
+/* Navigation Bar */
+.navbar {
+    background: #1c1c1c;
+    padding: 15px 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 2px solid #333;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.nav-logo {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    font-weight: bold;
+    font-size: 1.2rem;
+    color: #f39c12;
+}
+
+.logo-img { width: 40px; height: 40px; border-radius: 50%; }
+
+.nav-controls { display: flex; gap: 20px; align-items: center; }
+
+/* Main Content */
+.dashboard-container {
+    padding: 40px 20px;
+    max-width: 1100px;
+    margin: 0 auto;
+    flex: 1; /* Pushes footer to bottom */
+}
+
+.user-greeting h1 { margin: 0; color: #fff; }
+.user-greeting p { color: #888; margin-bottom: 30px; }
+
+/* Branch Grid */
+.branch-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 25px;
+    margin-top: 20px;
+}
+
+.branch-card {
+    max-width: none; /* Resetting width for grid */
+    transition: transform 0.3s ease;
+    border: 1px solid #333;
+}
+
+.branch-card:hover { transform: translateY(-10px); border-color: #f39c12; }
+
+.branch-icon { font-size: 3rem; margin-bottom: 15px; }
+
+.branch-btn {
+    background: transparent;
+    border: 1px solid #f39c12;
+    color: #f39c12;
+    margin-top: 15px;
+}
+
+.branch-btn:hover { background: #f39c12; color: #111; }
+
+/* Footer */
+.main-footer {
+    background: #1c1c1c;
+    padding: 30px;
+    text-align: center;
+    border-top: 1px solid #333;
+    color: #555;
+    font-size: 0.9rem;
+}
+
+.footer-links a { color: #888; text-decoration: none; margin: 0 10px; }
+
