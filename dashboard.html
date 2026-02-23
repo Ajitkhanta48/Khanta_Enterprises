@@ -1,16 +1,45 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Dashboard - Khanta Enterprises</title>
-<link rel="stylesheet" href="style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - Khanta Enterprises</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<div class="box">
-<h2>Dashboard</h2>
-<p>Welcome to Secure System</p>
-<button id="logoutBtn">Logout</button>
+<div class="dashboard-wrapper">
+    <div class="stats-row">
+        <div class="box stat-box">
+            <h4>Total Portfolio</h4>
+            <h2 id="totalValue">$0.00</h2>
+        </div>
+        <div class="box stat-box">
+            <h4>Day Change</h4>
+            <h2 id="dayChange" style="color: #2ecc71;">+0.00%</h2>
+        </div>
+        <div class="box stat-box">
+            <button id="logoutBtn" style="background: #e74c3c; margin: 0;">Logout</button>
+        </div>
+    </div>
+
+    <div class="main-content">
+        <div class="box table-container">
+            <h3>Market Watchlist</h3>
+            <table id="stockTable">
+                <thead>
+                    <tr>
+                        <th>Symbol</th>
+                        <th>Price</th>
+                        <th>Change</th>
+                    </tr>
+                </thead>
+                <tbody id="stockBody">
+                    <tr><td>AAPL</td><td>$182.50</td><td class="up">+1.2%</td></tr>
+                    <tr><td>TSLA</td><td>$238.45</td><td class="down">-0.8%</td></tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
 </div>
 
 <script type="module" src="app.js"></script>
