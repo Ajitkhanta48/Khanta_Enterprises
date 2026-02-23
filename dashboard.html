@@ -1,49 +1,61 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard - Khanta Enterprises</title>
     <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="dashbord.css">
 </head>
-<body>
+<body class="dashboard-body">
 
-<div class="dashboard-wrapper">
-    <div class="stats-row">
-        <div class="box stat-box">
-            <h4>Total Portfolio</h4>
-            <h2 id="totalValue">$0.00</h2>
+    <nav class="navbar">
+        <div class="nav-logo">
+            <img src="logo.png" alt="Logo" class="logo-img"> <span>Khanta Enterprises Dashboard</span>
         </div>
-        <div class="box stat-box">
-            <h4>Day Change</h4>
-            <h2 id="dayChange" style="color: #2ecc71;">+0.00%</h2>
+        <div class="nav-controls">
+            <button id="darkModeToggle" class="icon-btn">🌙</button>
+            <button id="logoutBtn" class="logout-link">Logout</button>
         </div>
-        <div class="box stat-box">
-            <button id="logoutBtn" style="background: #e74c3c; margin: 0;">Logout</button>
-        </div>
-    </div>
+    </nav>
 
-    <div class="main-content">
-        <div class="box table-container">
-            <h3>Market Watchlist</h3>
-            <table id="stockTable">
-                <thead>
-                    <tr>
-                        <th>Symbol</th>
-                        <th>Price</th>
-                        <th>Change</th>
-                    </tr>
-                </thead>
-                <tbody id="stockBody">
-                    <tr><td>AAPL</td><td>$182.50</td><td class="up">+1.2%</td></tr>
-                    <tr><td>TSLA</td><td>$238.45</td><td class="down">-0.8%</td></tr>
-                </tbody>
-            </table>
+    <main class="dashboard-container">
+        <header class="user-greeting">
+            <h1>Welcome back, <span id="userDisplayName">User</span>!</h1>
+            <p>Here is the current status across your enterprises.</p>
+        </header>
+
+        <section class="branches-section">
+            <h3>Our Branches</h3>
+            <div class="branch-grid">
+                <div class="box branch-card">
+                    <div class="branch-icon">📈</div>
+                    <h4>Stock Trading</h4>
+                    <p>Track your portfolio and market movements in real-time.</p>
+                    <button class="branch-btn">View Metrics</button>
+                </div>
+                <div class="box branch-card">
+                    <div class="branch-icon">🏗️</div>
+                    <h4>Construction</h4>
+                    <p>Monitor project timelines and resource allocation.</p>
+                    <button class="branch-btn">Manage Projects</button>
+                </div>
+                <div class="box branch-card">
+                    <div class="branch-icon">🚛</div>
+                    <h4>Logistics</h4>
+                    <p>Fleet management and delivery tracking overview.</p>
+                    <button class="branch-btn">Track Fleet</button>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="main-footer">
+        <p>&copy; 2024 Khanta Enterprises. All rights reserved.</p>
+        <div class="footer-links">
+            <a href="#">Support</a> | <a href="#">Privacy Policy</a>
         </div>
-    </div>
-</div>
+    </footer>
 
-<script type="module" src="app.js"></script>
-
+    <script type="module" src="app.js"></script>
 </body>
 </html>
